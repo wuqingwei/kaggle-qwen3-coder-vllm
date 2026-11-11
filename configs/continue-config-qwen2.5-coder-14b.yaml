@@ -1,0 +1,23 @@
+# Continue 插件配置（放隧道内 VS Code 的 Continue 配置里）
+# 模型跑在 Kaggle 会话里的 Ollama 上，Continue 也装在隧道内的 VS Code 里，
+# 所以 apiBase 用隧道内的 localhost:11434，不用暴露到公网。
+name: Kaggle Qwen Coder
+version: 1.0.0
+schema: v1
+context:
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: folder
+  - provider: codebase
+models:
+  - name: Qwen2.5-Coder-14B (Kaggle Ollama)
+    provider: ollama
+    model: qwen-coder-14b
+    apiBase: http://localhost:11434
+    roles:
+      - chat
+      - edit
+      - apply
